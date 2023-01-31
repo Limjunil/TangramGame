@@ -16,7 +16,8 @@ public class ExitBtn : MonoBehaviour
         
     }
 
-    //! Exit ¹öÆ°À» ´­·¶À» ¶§ ºÎ¸¦ ÇÔ¼ö
+
+    //! Exit ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ ë¶€ë¥¼ í•¨ìˆ˜
     public void OnExitButton()
     {
         GFunc.QuitThisGame();

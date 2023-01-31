@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public static partial class GFunc
 {
-    //! °ÔÀÓÀ» Á¾·áÇÏ´Â ÇÔ¼ö
+
+    //! ê²Œì„ì„ ì¢…ë£Œí•˜ëŠ” í•¨ìˆ˜
     public static void QuitThisGame()
     {
 #if UNITY_EDITOR
@@ -16,7 +17,7 @@ public static partial class GFunc
 #endif
     }       // QuitThisGame()
 
-    //! ´Ù¸¥ ¾ÀÀ» ·ÎµåÇÏ´Â ÇÔ¼ö
+    //! ë‹¤ë¥¸ ì”¬ì„ ë¡œë“œí•˜ëŠ” í•¨ìˆ˜
     public static void LoadScene(string sceneName_)
     {
         SceneManager.LoadScene(sceneName_);
