@@ -4,16 +4,23 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PuzzlePlayPart : MonoBehaviour, IPointerDownHandler,
-    IPointerUpHandler, IPointerMoveHandler
+    IPointerUpHandler, IDragHandler
 {
 
     private bool isClicked = false;
+    private RectTransform objRect = default;
+    private PuzzleInitZone puzzleInitZone = default;
 
 
     // Start is called before the first frame update
     void Start()
     {
         isClicked = false;
+
+        objRect = gameObject.GetRect();
+
+        puzzleInitZone = transform.parent.
+            gameObject.GetComponent<PuzzleInitZone>();
     }
 
     // Update is called once per frame
@@ -22,34 +29,33 @@ public class PuzzlePlayPart : MonoBehaviour, IPointerDownHandler,
         
     }
 
-    //! ¸¶¿ì½º ¹öÆ°À» ´­·¶À» ¶§ µ¿ÀÛÇÏ´Â ÇÔ¼ö
+    //! ë§ˆìš°ìŠ¤ ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ ë™ì‘í•˜ëŠ” í•¨ìˆ˜
     public void OnPointerDown(PointerEventData eventData)
     {
         isClicked = true;
 
-        
-        // DEBUG :
-        //GFunc.Log($"{gameObject.name} À» ¼±ÅÃÇß´Ù.");
     }   // OnPointerDown()
 
-    //! ¸¶¿ì½º ¹öÆ°¿¡¼­ ¼ÕÀ» ¶®À» ¶§ µ¿ÀÛÇÏ´Â ÇÔ¼ö
+    //! ë§ˆìš°ìŠ¤ ë²„íŠ¼ì—ì„œ ì†ì„ ë• ì„ ë•Œ ë™ì‘í•˜ëŠ” í•¨ìˆ˜
     public void OnPointerUp(PointerEventData eventData)
     {
         isClicked = false;
 
-        // DEBUG :
-        //GFunc.Log($"{gameObject.name} À» ¼±ÅÃ ÇØÁ¦Çß´Ù.");
-
     }   // OnPointerUp()
 
-    //! ¸¶¿ì½º¸¦ µå·¡±× ÁßÀÏ ¶§ µ¿ÀÛÇÏ´Â ÇÔ¼ö
-    public void OnPointerMove(PointerEventData eventData)
+    //! ë§ˆìš°ìŠ¤ë¥¼ ë“œë˜ê·¸ ì¤‘ì¼ ë•Œ ë™ì‘í•˜ëŠ” í•¨ìˆ˜
+    public void OnDrag(PointerEventData eventData)
     {
-        if(isClicked == true)
+        if (isClicked == true)
         {
-            gameObject.SetLocalPos(eventData.position.x, eventData.position.y, 0f);
+            // ì ˆëŒ€ ì¢Œí‘œë¥¼ ì„¤ì •í•˜ëŠ” ë¡œì§ ->
+            // ìƒëŒ€ì  ì›€ì§ì„ì„ í˜„ì¬ í¬ì§€ì…˜ì— ë”í•˜ëŠ” ë¡œì§ìœ¼ë¡œ ìˆ˜ì •
+            // eventData.delta
 
-            GFunc.Log($"¸¶¿ì½ºÀÇ Æ÷Áö¼ÇÀ» ´«À¸·Î È®ÀÎ : ({eventData.position.x}, {eventData.position.y})");
-        }   // if : ÇöÀç ¿ÀºêÁ§Æ®¸¦ ¼±ÅÃÇÑ °æ¿ì
+            // ìº”ë²„ìŠ¤ scaleFactor ë§Œí¼ ë°œìƒí•˜ëŠ” ì˜¤ì°¨ë¥¼ ìˆ˜ì •í•˜ëŠ” ë¡œì§
+            gameObject.AddAnchoredPos(eventData.delta / puzzleInitZone.parentCanves.scaleFactor);
+        }
+
     }   // OnPointerMove()
+
 }
