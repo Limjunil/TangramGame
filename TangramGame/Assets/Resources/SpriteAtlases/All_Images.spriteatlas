@@ -41,10 +41,12 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 4eb5e7303d654794e98658e4c61b94c4, type: 3}
   - {fileID: 21300000, guid: 1e4d2f30df444a94fa0b76e4eda03141, type: 3}
+  - {fileID: 21300000, guid: c250666b9456ed442b6ebbce320fce47, type: 2}
+  - {fileID: 21300000, guid: cf901d529df57d04f8e43f7c9e28c536, type: 2}
   - {fileID: 21300000, guid: ef5223a4807248b40a1369526c885248, type: 3}
   - {fileID: 21300000, guid: a1cd43676f9420b4db4156e957ac86a4, type: 3}
   - {fileID: 21300000, guid: b7f2b9c8f87c37f4582b022dbab5a474, type: 3}
-  - {fileID: 21300000, guid: c250666b9456ed442b6ebbce320fce47, type: 2}
+  - {fileID: 21300000, guid: 92d94779eb9deaf4ba3c59f4add4fffa, type: 2}
   - {fileID: 21300000, guid: 18f7f81b67c4575428778abca74fecaf, type: 2}
   - {fileID: 21300000, guid: 64ae7b4d8391540469572b87985cb101, type: 3}
   - {fileID: 21300000, guid: c061461e4bd75d44c88933dc67253fb8, type: 3}
@@ -52,10 +54,12 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - Puzzle_Square
   - WoodBoard
+  - Btn_Long_Green
+  - Guage_Long_Green
   - Puzzle_SmallTriangle1
   - Puzzle_SmallTriangle2
   - Puzzle_BigTriangle2
-  - Btn_Long_Green
+  - Guage_Long_Green_Back
   - Btn_Long_Green_Press
   - Puzzle_BigTriangle1
   - Puzzle_Parallelogram

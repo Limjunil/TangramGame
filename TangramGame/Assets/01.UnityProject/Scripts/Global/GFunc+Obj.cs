@@ -23,12 +23,17 @@ public static partial class GFunc
             else
             {
                 searchResult = FindChildObj(searchTarget, objName_);
+
+                // 방어로직
+                if (searchResult == null || searchResult == default) { /* Pass */ }
+                else { return searchResult; }
             }
         }       // loop
 
-        // 방어로직
-        if(searchResult == null || searchResult == default) { /* Pass */ }
-        else { return searchResult; }
+        // REGACY :
+        //// 방어로직
+        //if (searchResult == null || searchResult == default) { /* Pass */ }
+        //else { return searchResult; }
 
         return searchResult;
     }       // FindChildObj()
@@ -102,6 +107,18 @@ public static partial class GFunc
         T component_ = obj.GetComponent<T>();
 
         GFunc.Assert(component_.IsValid<T>() != false, 
+            string.Format("{0}에서 {1}을(를) 찾을 수 없습니다.",
+            obj.name, component_.GetType().Name));
+
+        return component_;
+    }       // GetComponentMust()
+
+    //! 컴포넌트 가져오는 함수
+    public static T GetComponentMust<T>(this GameObject obj, string objName)
+    {
+        T component_ = obj.FindChildObj(objName).GetComponent<T>();
+
+        GFunc.Assert(component_.IsValid<T>() != false,
             string.Format("{0}에서 {1}을(를) 찾을 수 없습니다.",
             obj.name, component_.GetType().Name));
 
